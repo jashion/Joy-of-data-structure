@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:JoyOfDataStructure.xcodeproj">
+      location = "self:JoyOfDataSturctureApp.xcodeproj">
    </FileRef>
 </Workspace>
