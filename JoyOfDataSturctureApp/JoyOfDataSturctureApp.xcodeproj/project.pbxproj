@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E2219D720C7BEB2004C165C /* CommonHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2219D620C7BEB2004C165C /* CommonHeader.swift */; };
 		9E273F7820C031730089E670 /* BasicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E273F7720C031730089E670 /* BasicController.swift */; };
+		9E453CE020C786E000DDB667 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E453CDF20C786E000DDB667 /* StringExtension.swift */; };
 		9E7D48EC20BAA2E300614B6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7D48EB20BAA2E300614B6B /* AppDelegate.swift */; };
 		9E7D48EE20BAA2E300614B6B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7D48ED20BAA2E300614B6B /* ViewController.swift */; };
 		9E7D48F120BAA2E300614B6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E7D48EF20BAA2E300614B6B /* Main.storyboard */; };
@@ -18,7 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9E2219D620C7BEB2004C165C /* CommonHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonHeader.swift; sourceTree = "<group>"; };
 		9E273F7720C031730089E670 /* BasicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicController.swift; sourceTree = "<group>"; };
+		9E453CDF20C786E000DDB667 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		9E7D48E820BAA2E300614B6B /* JoyOfDataSturctureApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JoyOfDataSturctureApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E7D48EB20BAA2E300614B6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E7D48ED20BAA2E300614B6B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +73,8 @@
 				9E7D48F420BAA2E500614B6B /* LaunchScreen.storyboard */,
 				9E7D48F720BAA2E500614B6B /* Info.plist */,
 				9E273F7720C031730089E670 /* BasicController.swift */,
+				9E453CDF20C786E000DDB667 /* StringExtension.swift */,
+				9E2219D620C7BEB2004C165C /* CommonHeader.swift */,
 			);
 			path = JoyOfDataSturctureApp;
 			sourceTree = "<group>";
@@ -162,7 +168,9 @@
 			files = (
 				9E7D490220BAA7CE00614B6B /* DataStructureVC.swift in Sources */,
 				9E7D48EE20BAA2E300614B6B /* ViewController.swift in Sources */,
+				9E453CE020C786E000DDB667 /* StringExtension.swift in Sources */,
 				9E7D490020BAA7BE00614B6B /* AlgorithmVC.swift in Sources */,
+				9E2219D720C7BEB2004C165C /* CommonHeader.swift in Sources */,
 				9E273F7820C031730089E670 /* BasicController.swift in Sources */,
 				9E7D48EC20BAA2E300614B6B /* AppDelegate.swift in Sources */,
 			);

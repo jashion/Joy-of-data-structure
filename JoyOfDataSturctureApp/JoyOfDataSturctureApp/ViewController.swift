@@ -12,6 +12,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let structData: [String] = ["数据结构概述", "线性表", "栈与队列", "串", "树", "图"];
     let algorithmData: [String] = ["算法概述", "查找", "排序"]
     let titles: [String] = ["数据结构", "算法"];
+
     var tableView: UITableView {
         get {
             let table = UITableView.init(frame: UIScreen.main.bounds, style: .plain)
@@ -24,7 +25,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "数据结构与算法"
-        
         self.view.backgroundColor = UIColor.white
         self.view.addSubview(self.tableView)
     }
