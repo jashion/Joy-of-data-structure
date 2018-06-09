@@ -36,3 +36,44 @@ extension String {
         return sum
     }
 }
+
+extension NSMutableAttributedString {
+    func convinceAddAttributes(font: UIFont?, color: UIColor?, kern: CGFloat, paragraph: NSMutableParagraphStyle?, range: NSRange) {
+        guard range.location != NSNotFound else {
+            return
+        }
+        
+        var attributesDict: [NSAttributedStringKey: Any] = [:]
+        if let textFont = font {
+            attributesDict[NSAttributedStringKey.font] = textFont
+        }
+        if let textColor = color {
+            attributesDict[NSAttributedStringKey.foregroundColor] = textColor
+        }
+        if let textParagraph = paragraph {
+            attributesDict[NSAttributedStringKey.paragraphStyle] = textParagraph
+        }
+        attributesDict[NSAttributedStringKey.kern] = kern
+        guard !attributesDict.isEmpty else {
+            return;
+        }
+        self.addAttributes(attributesDict, range: range)
+    }
+    
+    func attributesWithRanges(attributes: Any?, ranges: Array<NSRange>) {
+        guard attributes != nil, !ranges.isEmpty else {
+            return
+        }
+        
+        if let attr = attributes as? Dictionary<NSAttributedStringKey, Any> {
+            for range in ranges {
+                self.addAttributes(attr, range: range)
+            }
+        } else if let attrArray = attributes as? Array<Dictionary<NSAttributedStringKey, Any>>, attrArray.count == ranges.count {
+            for (index, range) in ranges.enumerated() {
+                let attr = attrArray[index]
+                self.addAttributes(attr, range: range)
+            }
+        }
+    }
+}
