@@ -15,3 +15,6 @@ let textBlue = UIColor.init(red: 103.0/255.0, green: 192.0/255.0, blue: 1.0, alp
 let textRed = UIColor.red
 let textGreen = "09BC8A".hexStringToColor()
 let backgroundColor = "EEF6FE".hexStringToColor()
+let imageBackgroundColor = "F3F4F9".hexStringToColor()
+let lineColor = "16407C".hexStringToColor()
+let itemColor = "D5DFFC".hexStringToColor()
