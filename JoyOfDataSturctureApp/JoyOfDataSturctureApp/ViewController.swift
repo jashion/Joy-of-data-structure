@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
     let structData: [String] = ["数据结构概述", "线性表", "栈与队列", "串", "树", "图"];
     let algorithmData: [String] = ["算法概述", "查找", "排序"]
     let titles: [String] = ["数据结构", "算法"];
@@ -28,6 +28,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.heavy), NSAttributedStringKey.foregroundColor: textBlack]
         self.view.backgroundColor = UIColor.white
         self.view.addSubview(self.tableView)
+        
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+    }
+    
+    //Delegate
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if self.navigationController?.viewControllers.count == 1 {
+            return false
+        }
+        return true
     }
 
     //UITableViewDataSource

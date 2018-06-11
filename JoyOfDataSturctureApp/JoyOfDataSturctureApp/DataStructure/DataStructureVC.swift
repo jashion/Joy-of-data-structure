@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DataStructureVC: UIViewController, UIGestureRecognizerDelegate {
+class DataStructureVC: UIViewController {
     
     var scrollView: UIScrollView!
     let padding:CGFloat = 15
@@ -31,9 +31,6 @@ class DataStructureVC: UIViewController, UIGestureRecognizerDelegate {
         self.view.backgroundColor = backgroundColor;
         self.navigationItem.title = "数据结构概述"
         
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
-
         self.navigationItem.hidesBackButton = true
         let backButton = UIButton(type: .custom)
         backButton.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
@@ -276,15 +273,7 @@ class DataStructureVC: UIViewController, UIGestureRecognizerDelegate {
     deinit {
         print("dealloc")
     }
-    
-    //Delegate
-    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        if self.navigationController?.viewControllers.count == 1 {
-            return false
-        }
-        return true
-    }
-    
+        
     //Event response
     @objc func handleClickEvent(button: UIButton) {
         self.navigationController?.popViewController(animated: true)
