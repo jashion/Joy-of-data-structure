@@ -10,16 +10,14 @@ import UIKit
 
 class DataStructureVC: UIViewController {
     
-    var scrollView: UIScrollView!
-    let padding:CGFloat = 15
-    let margin:CGFloat = 5
-    let space:CGFloat = 10
-    let lightMaxFont: UIFont = UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.light)
-    let heavyMaxFont: UIFont = UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.heavy)
-    let lightFont: UIFont = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.light)
-    let regularFont: UIFont = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.regular)
-    let boldFont: UIFont = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.bold)
-    let heavyFont: UIFont = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.heavy)
+    var scrollView: UIScrollView = {
+        let scrollView = UIScrollView.init(frame: UIScreen.main.bounds)
+        scrollView.showsVerticalScrollIndicator = true
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.scrollsToTop = true
+        scrollView.alwaysBounceVertical = true
+        return scrollView
+    }()
     var size: CGSize!
     var width: CGFloat!
     var height: CGFloat!
@@ -29,7 +27,11 @@ class DataStructureVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = backgroundColor;
-        self.navigationItem.title = "数据结构概述"
+        
+        size = self.view.frame.size
+        width = size.width
+        height = size.height
+        contentWidth = width-padding*2
         
         self.navigationItem.hidesBackButton = true
         let backButton = UIButton(type: .custom)
@@ -40,16 +42,6 @@ class DataStructureVC: UIViewController {
         let backBarItem = UIBarButtonItem(customView: backButton)
         self.navigationItem.leftBarButtonItem = backBarItem
         
-        size = self.view.frame.size
-        width = size.width
-        height = size.height
-        contentWidth = width-padding*2
-        
-        scrollView = UIScrollView.init(frame: self.view.bounds)
-        scrollView.showsVerticalScrollIndicator = true
-        scrollView.showsHorizontalScrollIndicator = false
-        scrollView.scrollsToTop = true
-        scrollView.alwaysBounceVertical = true
         self.view.addSubview(scrollView)
         
         //数据结构概述
@@ -268,12 +260,33 @@ class DataStructureVC: UIViewController {
         
         let abstractDataTypeDefineImage = UIImage(named: "AbstractDataTypeDefine")
         self.scrollViewAddImage(image: abstractDataTypeDefineImage)
+        
+        let structureTypeAbstractAttr = NSMutableAttributedString(string: "数据结构 VS 数据类型 VS 抽象数据类型")
+        self.setCommonAttrs(attr: structureTypeAbstractAttr, boldRange: NSMakeRange(0, structureTypeAbstractAttr.length))
+        let structureTypeAbstractLabel = self.createAttributedLabel(frame: CGRect(x: padding, y: totalHeight+padding, width: contentWidth, height: 0), attributedStr: structureTypeAbstractAttr)
+        structureTypeAbstractLabel.textAlignment = .center
+        self.scrollViewAddSubView(subView: structureTypeAbstractLabel)
+        
+        let structureTypeAbstractImage = UIImage(named: "StructureTypeAbstract")
+        self.scrollViewAddImage(image: structureTypeAbstractImage)
+        
+        let exampleAttr = NSMutableAttributedString(string:
+            """
+            数据类型 -> 类比：类
+            抽象数据类型 -> 类比：接口
+            数据结构 -> 类比：数组（管理类的实例）
+            """)
+        self.setCommonAttrs(attr: exampleAttr, boldRange: NSMakeRange(0, 0))
+        exampleAttr.addAttributes([NSAttributedStringKey.font: heavyFont
+            ], range: NSMakeRange(0, exampleAttr.length))
+        let exampleLabel = self.createAttributedLabel(frame: CGRect(x: padding, y: totalHeight+padding, width: contentWidth, height: 0), attributedStr: exampleAttr)
+        self.scrollViewAddSubView(subView: exampleLabel)
     }
     
     deinit {
         print("dealloc")
     }
-        
+    
     //Event response
     @objc func handleClickEvent(button: UIButton) {
         self.navigationController?.popViewController(animated: true)
@@ -348,7 +361,7 @@ class DataStructureVC: UIViewController {
         
         self.drawTriangle(startPoint: CGPoint(x: point6.x-CGFloat(1), y: point6.y-CGFloat(15)), toUp: true, toLeft: false)
         
-        self.drawTriangle(startPoint: CGPoint(x: point7.x-CGFloat(11), y: point7.y+CGFloat(11)), toUp: false, toLeft: true)
+        self.drawTriangle(startPoint: CGPoint(x: point7.x-CGFloat(1), y: point7.y+CGFloat(14)), toUp: false, toLeft: true)
         
         self.drawTriangle(startPoint: CGPoint(x: point8.x+CGFloat(15), y: point8.y+CGFloat(1)), toUp: false, toLeft: false)
         
@@ -586,7 +599,7 @@ class DataStructureVC: UIViewController {
     private func scrollViewAddSubView(subView: UIView) {
         scrollView.addSubview(subView)
         totalHeight = subView.frame.maxY
-        scrollView.contentSize = CGSize(width: width, height: totalHeight)
+        scrollView.contentSize = CGSize(width: width, height: totalHeight+padding)
     }
     
     private func scrollViewAddImage(image: UIImage?) {
@@ -598,12 +611,5 @@ class DataStructureVC: UIViewController {
         imageView.image = realImage
         imageView.contentMode = .scaleToFill
         self.scrollViewAddSubView(subView: imageView)
-    }
-    
-    func setCommonAttrs(attr: NSMutableAttributedString, boldRange: NSRange) {
-        let paragraph = NSMutableParagraphStyle.init()
-        paragraph.lineSpacing = 8
-        attr.convinceAddAttributes(font: lightFont, color: textBlack, kern: 1, paragraph: paragraph, range: NSMakeRange(0, attr.length))
-        attr.attributesWithRanges(attributes: [NSAttributedStringKey.font: heavyMaxFont], ranges: [boldRange])
-    }
+    }    
 }

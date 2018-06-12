@@ -7,23 +7,64 @@
 //
 
 import UIKit
+import SnapKit
 
 class AlgorithmVC: UIViewController {
     
-    var scrollView: UIScrollView!
-    let padding:CGFloat = 15
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white;
-        self.navigationItem.title = "算法概述"
-                
-        scrollView = UIScrollView.init(frame: self.view.bounds)
+    var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
         scrollView.showsVerticalScrollIndicator = true
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.scrollsToTop = true
         scrollView.alwaysBounceVertical = true
+        return scrollView
+    }()
+    var size: CGSize!
+    var width: CGFloat!
+    var height: CGFloat!
+    var contentWidth: CGFloat!
+    var totalHeight: CGFloat!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = backgroundColor;
+        
+        size = self.view.frame.size
+        width = size.width
+        height = size.height
+        contentWidth = width-padding*2
+        
+        self.navigationItem.hidesBackButton = true
+        let backButton = UIButton(type: .custom)
+        backButton.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
+        backButton.setImage(UIImage(named: "BackIcon"), for: .normal)
+        backButton.imageEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 10)
+        backButton.addTarget(self, action: #selector(handleClickEvent), for: .touchUpInside)
+        let backBarItem = UIBarButtonItem(customView: backButton)
+        self.navigationItem.leftBarButtonItem = backBarItem
+        
         self.view.addSubview(scrollView)
+        scrollView.frame = self.view.bounds
+        
+        let algorithmDefineAttr = NSMutableAttributedString.init(string:
+            """
+            算法定义：
+                算法是解决特定问题求解步骤的描述，在计算机中表现为指令的有限序列，并且每条指令代表一个或者多个操作。
+            """)
+        self.setCommonAttrs(attr: algorithmDefineAttr, boldRange: NSMakeRange(0, 5))
+        let algorithmDefine = self.createLabel(font: lightFont, textColor: textBlack, textAlignment: .left)
+        algorithmDefine.attributedText = algorithmDefineAttr
+        let algorithmSize = algorithmDefine.sizeThatFits(CGSize(width: contentWidth, height: CGFloat.greatestFiniteMagnitude))
+        scrollView.addSubview(algorithmDefine)
+        algorithmDefine.snp.makeConstraints { (make) in
+            make.left.equalTo(scrollView).offset(padding)
+            make.top.equalTo(scrollView).offset(padding)
+            make.size.equalTo(algorithmSize)
+        }
     }
     
+    //Event response
+    @objc func handleClickEvent(button: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
 }

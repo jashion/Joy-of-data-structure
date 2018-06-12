@@ -18,3 +18,14 @@ let backgroundColor = "EEF6FE".hexStringToColor()
 let imageBackgroundColor = "F3F4F9".hexStringToColor()
 let lineColor = "16407C".hexStringToColor()
 let itemColor = "D5DFFC".hexStringToColor()
+
+let padding:CGFloat = 15
+let margin:CGFloat = 5
+let space:CGFloat = 10
+let lightMaxFont: UIFont = UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.light)
+let heavyMaxFont: UIFont = UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.heavy)
+let lightFont: UIFont = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.light)
+let regularFont: UIFont = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.regular)
+let boldFont: UIFont = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.bold)
+let heavyFont: UIFont = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.heavy)
+let titleFont = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.heavy)

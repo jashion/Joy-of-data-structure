@@ -9,8 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
-    let structData: [String] = ["数据结构概述", "线性表", "栈与队列", "串", "树", "图"];
-    let algorithmData: [String] = ["算法概述", "查找", "排序"]
+    let structData: [String] = ["数据结构", "线性表", "栈与队列", "串", "树", "图"];
+    let algorithmData: [String] = ["算法", "查找", "排序"]
     let titles: [String] = ["数据结构", "算法"];
 
     var tableView: UITableView {
@@ -82,14 +82,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         _ = [tableView .deselectRow(at: indexPath, animated: true)];
         let section = indexPath.section
         let row = indexPath.row
+        var title: String
+        if section == 0 {
+            title = structData[row]
+        } else {
+            title = algorithmData[row]
+        }
         if section == 0, row == 0 {
             let dataStructureVC = DataStructureVC.init()
+            dataStructureVC.navigationItem.title = title
             self.navigationController?.pushViewController(dataStructureVC, animated: true)
             return;
         }
         
         if section == 1,row == 0 {
             let algorithmVC = AlgorithmVC.init()
+            algorithmVC.navigationItem.title = title
             self.navigationController?.pushViewController(algorithmVC, animated: true)
         }
     }
