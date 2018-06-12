@@ -57,8 +57,7 @@ class AlgorithmVC: UIViewController {
         let algorithmSize = algorithmDefine.sizeThatFits(CGSize(width: contentWidth, height: CGFloat.greatestFiniteMagnitude))
         scrollView.addSubview(algorithmDefine)
         algorithmDefine.snp.makeConstraints { (make) in
-            make.left.equalTo(scrollView).offset(padding)
-            make.top.equalTo(scrollView).offset(padding)
+            make.left.top.equalToSuperview().offset(padding)
             make.size.equalTo(algorithmSize)
         }
     }

@@ -37,7 +37,7 @@ class DataStructureVC: UIViewController {
         let backButton = UIButton(type: .custom)
         backButton.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
         backButton.setImage(UIImage(named: "BackIcon"), for: .normal)
-        backButton.imageEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 10)
+        backButton.imageEdgeInsets = UIEdgeInsetsMake(0, -18, 0, 18)
         backButton.addTarget(self, action: #selector(handleClickEvent), for: .touchUpInside)
         let backBarItem = UIBarButtonItem(customView: backButton)
         self.navigationItem.leftBarButtonItem = backBarItem
@@ -290,6 +290,13 @@ class DataStructureVC: UIViewController {
     //Event response
     @objc func handleClickEvent(button: UIButton) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func handleTapImage(tapGesture: UITapGestureRecognizer) {
+        if scrollView.isDecelerating {
+            return
+        }
+        
     }
     
     // Private methods
@@ -610,6 +617,9 @@ class DataStructureVC: UIViewController {
         let imageView = UIImageView(frame: CGRect(x: padding, y: totalHeight+margin, width: contentWidth, height: contentWidth*ratio))
         imageView.image = realImage
         imageView.contentMode = .scaleToFill
+        imageView.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapImage))
+        imageView.addGestureRecognizer(tapGesture)
         self.scrollViewAddSubView(subView: imageView)
     }    
 }
