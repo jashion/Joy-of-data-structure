@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import RxSwift
 
 class AlgorithmVC: UIViewController {
     
@@ -60,10 +61,43 @@ class AlgorithmVC: UIViewController {
             make.left.top.equalToSuperview().offset(padding)
             make.size.equalTo(algorithmSize)
         }
+        
+        self.scrollViewAddImage(image: UIImage(named: "AlgorithmCharacter")) { (imageView, ratio) in
+            scrollView.addSubview(imageView)
+            let imageHeight = ratio*contentWidth
+            imageView.snp.makeConstraints({ (make) in
+                make.left.equalToSuperview().offset(padding)
+                make.top.equalTo(algorithmDefine.snp.bottom).offset(padding)
+                make.width.equalTo(contentWidth)
+                make.height.equalTo(imageHeight)
+            })
+        }
     }
     
     //Event response
     @objc func handleClickEvent(button: UIButton) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func handleTapImage(tapGesture: UITapGestureRecognizer) {
+        if scrollView.isDecelerating {
+            return
+        }
+        
+    }
+    
+    private func scrollViewAddImage(image: UIImage?,
+                                    completion: (UIImageView, CGFloat) -> Void) {
+        guard let realImage = image else {
+            return;
+        }
+        let ratio = realImage.size.height/realImage.size.width
+        let imageView = UIImageView()
+        imageView.image = realImage
+        imageView.contentMode = .scaleToFill
+        imageView.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapImage))
+        imageView.addGestureRecognizer(tapGesture)
+        completion(imageView, ratio)
     }
 }
