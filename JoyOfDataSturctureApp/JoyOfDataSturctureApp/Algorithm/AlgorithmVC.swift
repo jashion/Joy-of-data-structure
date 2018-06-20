@@ -62,16 +62,57 @@ class AlgorithmVC: UIViewController {
             make.size.equalTo(algorithmSize)
         }
         
-        self.scrollViewAddImage(image: UIImage(named: "AlgorithmCharacter")) { (imageView, ratio) in
-            scrollView.addSubview(imageView)
-            let imageHeight = ratio*contentWidth
-            imageView.snp.makeConstraints({ (make) in
-                make.left.equalToSuperview().offset(padding)
-                make.top.equalTo(algorithmDefine.snp.bottom).offset(padding)
-                make.width.equalTo(contentWidth)
-                make.height.equalTo(imageHeight)
-            })
+        let algorithmCharacterAttr = NSMutableAttributedString(string: "算法特性")
+        self.setCommonAttrs(attr: algorithmCharacterAttr, boldRange: NSMakeRange(0, algorithmCharacterAttr.length))
+        let algorithmCharacterLabel = self.createLabel(font: lightFont, textColor: textBlack, textAlignment: .center)
+        algorithmCharacterLabel.attributedText = algorithmCharacterAttr
+        let algorithmCharacterSize = algorithmCharacterLabel.sizeThatFits(CGSize(width: contentWidth, height: CGFloat.greatestFiniteMagnitude))
+        scrollView.addSubview(algorithmCharacterLabel)
+        algorithmCharacterLabel.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(algorithmDefine.snp.bottom).offset(padding)
+            make.size.equalTo(algorithmCharacterSize)
         }
+        
+        var algorithmCharacterImageView: UIImageView?
+        var algorithmCharacterRatio: CGFloat?
+        self.scrollViewAddImage(image: UIImage(named: "AlgorithmCharacter")) { (imageView, ratio) in
+            algorithmCharacterImageView = imageView
+            algorithmCharacterRatio = ratio;
+        }
+        scrollView.addSubview(algorithmCharacterImageView!)
+        let imageHeight = algorithmCharacterRatio!*contentWidth
+        algorithmCharacterImageView!.snp.makeConstraints({ (make) in
+            make.left.equalToSuperview().offset(padding)
+            make.top.equalTo(algorithmCharacterLabel.snp.bottom).offset(margin)
+            make.size.equalTo(CGSize(width: contentWidth, height: imageHeight))
+        })
+        
+        let algorithmDesignAttr = NSMutableAttributedString(string: "算法设计要求")
+        self.setCommonAttrs(attr: algorithmDesignAttr, boldRange: NSMakeRange(0, algorithmDesignAttr.length))
+        let algorithmDesignLabel = self.createLabel(font: lightFont, textColor: textBlack, textAlignment: .center)
+        algorithmDesignLabel.attributedText = algorithmDesignAttr
+        let algorithmDesignSize = algorithmDesignLabel.sizeThatFits(CGSize(width: contentWidth, height: CGFloat.greatestFiniteMagnitude))
+        scrollView.addSubview(algorithmDesignLabel)
+        algorithmDesignLabel.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.top.equalTo((algorithmCharacterImageView?.snp.bottom)!).offset(padding)
+            make.size.equalTo(algorithmDesignSize)
+        }
+        
+        var algorithmDesignImageView: UIImageView?
+        var algorithmDesignRatio: CGFloat?
+        self.scrollViewAddImage(image: UIImage(named: "AlgorithmDesign")) { (imageView, ratio) in
+            algorithmDesignImageView = imageView
+            algorithmDesignRatio = ratio;
+        }
+        scrollView.addSubview(algorithmDesignImageView!)
+        let imageHeight2 = algorithmDesignRatio!*contentWidth
+        algorithmDesignImageView!.snp.makeConstraints({ (make) in
+            make.left.equalToSuperview().offset(padding)
+            make.top.equalTo(algorithmDesignLabel.snp.bottom).offset(margin)
+            make.size.equalTo(CGSize(width: contentWidth, height: imageHeight2))
+        })
     }
     
     //Event response
