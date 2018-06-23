@@ -41,6 +41,7 @@ class DataStructureVC: UIViewController {
         backButton.addTarget(self, action: #selector(handleClickEvent), for: .touchUpInside)
         let backBarItem = UIBarButtonItem(customView: backButton)
         self.navigationItem.leftBarButtonItem = backBarItem
+        self.navigationItem.title = "数据结构"
         
         self.view.addSubview(scrollView)
         

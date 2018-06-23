@@ -9,8 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
-    let structData: [String] = ["数据结构", "线性表", "栈与队列", "串", "树", "图"];
-    let algorithmData: [String] = ["算法", "查找", "排序"]
+    let structData: [String] = ["定义", "线性表", "栈与队列", "串", "树", "图"];
+    let algorithmData: [String] = ["定义", "查找", "排序"]
     let titles: [String] = ["数据结构", "算法"];
 
     var tableView: UITableView {
