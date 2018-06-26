@@ -13,28 +13,18 @@ import RxSwift
 class AlgorithmVC: UIViewController {
     
     var scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
+        let scrollView = UIScrollView.init(frame: UIScreen.main.bounds)
         scrollView.showsVerticalScrollIndicator = true
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.scrollsToTop = true
         scrollView.alwaysBounceVertical = true
         return scrollView
     }()
-    var size: CGSize!
-    var width: CGFloat!
-    var height: CGFloat!
-    var contentWidth: CGFloat!
-    var totalHeight: CGFloat!
+    var totalHeight: CGFloat = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = backgroundColor;
-        
-        size = self.view.frame.size
-        width = size.width
-        height = size.height
-        contentWidth = width-padding*2
-        totalHeight = 0
         
         self.navigationItem.hidesBackButton = true
         let backButton = UIButton(type: .custom)
@@ -215,49 +205,14 @@ class AlgorithmVC: UIViewController {
     }
     
     private func buildLabel(topView: UIView?, content: String, boldTextRange: NSRange, alignment: NSTextAlignment) -> UILabel {
-        let attributedText = NSMutableAttributedString(string: content)
-        self.setCommonAttrs(attr: attributedText, boldRange: boldTextRange)
-        let label = self.createLabel(font: lightFont, textColor: textBlack, textAlignment: alignment)
-        label.attributedText = attributedText
-        let textSize = label.sizeThatFits(CGSize(width: contentWidth, height: CGFloat.greatestFiniteMagnitude))
-        scrollView.addSubview(label)
-        label.snp.makeConstraints { (make) in
-            if let view = topView {
-                make.top.equalTo(view.snp.bottom).offset(padding)
-            } else {
-                make.top.equalToSuperview().offset(padding)
-            }
-            if (alignment == .center) {
-                make.centerX.equalToSuperview()
-            } else {
-                make.left.equalToSuperview().offset(padding)
-            }
-            make.size.equalTo(textSize)
-        }
-        totalHeight = totalHeight + textSize.height + padding
-        return label
+        let result = self.buildLabel(topView: topView, superView: scrollView, content: content, boldTextRange: boldTextRange, alignment: alignment)
+        totalHeight = totalHeight + result.1
+        return result.0
     }
     
     private func buildImageView(topView: UIView?, image: UIImage) -> UIImageView {
-        let ratio = image.size.height/image.size.width
-        let imageView = UIImageView()
-        imageView.image = image
-        imageView.contentMode = .scaleToFill
-        imageView.isUserInteractionEnabled = true
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapImage))
-        imageView.addGestureRecognizer(tapGesture)
-        scrollView.addSubview(imageView)
-        let imageHeight = ratio*contentWidth
-        imageView.snp.makeConstraints({ (make) in
-            if let view = topView {
-                make.top.equalTo(view.snp.bottom).offset(margin)
-            } else {
-                make.top.equalToSuperview().offset(margin)
-            }
-            make.left.equalToSuperview().offset(padding)
-            make.size.equalTo(CGSize(width: contentWidth, height: imageHeight))
-        })
-        totalHeight = totalHeight + imageHeight + margin
-        return imageView
+        let result = self.buildImageView(topView: topView, superView: scrollView, image: image)
+        totalHeight = totalHeight + result.1
+        return result.0
     }
 }

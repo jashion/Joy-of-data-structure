@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E00500F20E276C6007120D2 /* LinearTableDefineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E00500E20E276C6007120D2 /* LinearTableDefineController.swift */; };
 		9E2219D720C7BEB2004C165C /* CommonHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2219D620C7BEB2004C165C /* CommonHeader.swift */; };
 		9E273F7820C031730089E670 /* BasicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E273F7720C031730089E670 /* BasicController.swift */; };
 		9E453CE020C786E000DDB667 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E453CDF20C786E000DDB667 /* StringExtension.swift */; };
@@ -26,6 +27,7 @@
 		07D83770F5046DF1CDE2F868 /* Pods-JoyOfDataSturctureApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JoyOfDataSturctureApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-JoyOfDataSturctureApp/Pods-JoyOfDataSturctureApp.release.xcconfig"; sourceTree = "<group>"; };
 		0D963EBDB4BF61465836A2E1 /* Pods_JoyOfDataSturctureApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JoyOfDataSturctureApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21154B0AC8B81426C7951FF1 /* Pods-JoyOfDataSturctureApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JoyOfDataSturctureApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JoyOfDataSturctureApp/Pods-JoyOfDataSturctureApp.debug.xcconfig"; sourceTree = "<group>"; };
+		9E00500E20E276C6007120D2 /* LinearTableDefineController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearTableDefineController.swift; sourceTree = "<group>"; };
 		9E2219D620C7BEB2004C165C /* CommonHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonHeader.swift; sourceTree = "<group>"; };
 		9E273F7720C031730089E670 /* BasicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicController.swift; sourceTree = "<group>"; };
 		9E453CDF20C786E000DDB667 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -60,6 +62,15 @@
 				0D963EBDB4BF61465836A2E1 /* Pods_JoyOfDataSturctureApp.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9E00500D20E2769F007120D2 /* LinearTableGroup */ = {
+			isa = PBXGroup;
+			children = (
+				9E69D8A820D116B700239BD5 /* LinearTableVC.swift */,
+				9E00500E20E276C6007120D2 /* LinearTableDefineController.swift */,
+			);
+			path = LinearTableGroup;
 			sourceTree = "<group>";
 		};
 		9E7D48DF20BAA2E300614B6B = {
@@ -102,8 +113,8 @@
 		9E7D48FD20BAA72100614B6B /* DataStructure */ = {
 			isa = PBXGroup;
 			children = (
+				9E00500D20E2769F007120D2 /* LinearTableGroup */,
 				9E7D490120BAA7CE00614B6B /* DataStructureVC.swift */,
-				9E69D8A820D116B700239BD5 /* LinearTableVC.swift */,
 			);
 			path = DataStructure;
 			sourceTree = "<group>";
@@ -243,6 +254,7 @@
 			files = (
 				9E7D490220BAA7CE00614B6B /* DataStructureVC.swift in Sources */,
 				9E7D48EE20BAA2E300614B6B /* ViewController.swift in Sources */,
+				9E00500F20E276C6007120D2 /* LinearTableDefineController.swift in Sources */,
 				9E453CE020C786E000DDB667 /* StringExtension.swift in Sources */,
 				9E7D490020BAA7BE00614B6B /* AlgorithmVC.swift in Sources */,
 				9E2219D720C7BEB2004C165C /* CommonHeader.swift in Sources */,

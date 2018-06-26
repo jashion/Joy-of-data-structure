@@ -29,3 +29,7 @@ let regularFont: UIFont = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.re
 let boldFont: UIFont = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.bold)
 let heavyFont: UIFont = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.heavy)
 let titleFont = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.heavy)
+
+let screen_width = UIScreen.main.bounds.size.width
+let screen_height = UIScreen.main.bounds.size.height
+let contentWidth = screen_width-padding*2

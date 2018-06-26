@@ -12,6 +12,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let structData: [String] = ["定义", "线性表", "栈与队列", "串", "树", "图"];
     let algorithmData: [String] = ["定义", "查找", "排序"]
     let titles: [String] = ["数据结构", "算法"];
+    let algorithmControllers: [UIViewController] = [AlgorithmVC(), UIViewController(), UIViewController()]
+    let structDataControllers: [UIViewController] = [DataStructureVC(), LinearTableVC(), UIViewController(), UIViewController(), UIViewController(), UIViewController()]
 
     var tableView: UITableView {
         get {
@@ -83,23 +85,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let section = indexPath.section
         let row = indexPath.row
         var title: String
+        var controller: UIViewController
         if section == 0 {
             title = structData[row]
+            controller = structDataControllers[row]
         } else {
             title = algorithmData[row]
-        }
-        if section == 0, row == 0 {
-            let dataStructureVC = DataStructureVC.init()
-            dataStructureVC.navigationItem.title = title
-            self.navigationController?.pushViewController(dataStructureVC, animated: true)
-            return;
+            controller = algorithmControllers[row]
         }
         
-        if section == 1,row == 0 {
-            let algorithmVC = AlgorithmVC.init()
-            algorithmVC.navigationItem.title = title
-            self.navigationController?.pushViewController(algorithmVC, animated: true)
-        }
+        controller.navigationItem.title = title
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 }
 
