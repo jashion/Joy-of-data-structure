@@ -26,6 +26,26 @@ class LinearTableVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         self.view.addSubview(tableView)
     }
     
+    func createController(indexPath: IndexPath) -> UIViewController {
+        let row = indexPath.row
+        switch row {
+        case 0:
+            return LinearTableDefineController()
+        case 1:
+            return OrderLinearTableController()
+        case 2:
+            return LinkLinearTableController()
+        case 3:
+            return SingleLinearTableController()
+        case 4:
+            return StaticLinkLinearTableController()
+        case 5:
+            return CycleLinkLinearTableController()
+        default:
+            return UIViewController()
+        }
+    }
+    
     //UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return titles.count
@@ -40,5 +60,10 @@ class LinearTableVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         cell?.backgroundColor = UIColor.white
         cell?.textLabel?.text = titles[indexPath.row]
         return cell!
+    }
+    
+    //UITableViewDelegate
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.navigationController?.pushViewController(self.createController(indexPath: indexPath), animated: true)
     }
 }

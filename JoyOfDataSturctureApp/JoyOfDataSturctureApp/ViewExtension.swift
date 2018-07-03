@@ -17,7 +17,7 @@ extension UIViewController {
         label.numberOfLines = 0
         return label
     }
-    
+        
     func setCommonAttrs(attr: NSMutableAttributedString, boldRange: NSRange) {
         let paragraph = NSMutableParagraphStyle.init()
         paragraph.lineSpacing = 8

@@ -12,8 +12,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let structData: [String] = ["定义", "线性表", "栈与队列", "串", "树", "图"];
     let algorithmData: [String] = ["定义", "查找", "排序"]
     let titles: [String] = ["数据结构", "算法"];
-    let algorithmControllers: [UIViewController] = [AlgorithmVC(), UIViewController(), UIViewController()]
-    let structDataControllers: [UIViewController] = [DataStructureVC(), LinearTableVC(), UIViewController(), UIViewController(), UIViewController(), UIViewController()]
 
     var tableView: UITableView {
         get {
@@ -33,6 +31,38 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+    }
+    
+    func createController(indexPath: IndexPath) -> UIViewController {
+        let section = indexPath.section
+        let row = indexPath.row
+        if section == 0 {
+            switch row {
+            case 0:
+                return DataStructureVC()
+            case 1:
+                return LinearTableVC()
+            case 2:
+                return UIViewController()
+            case 3:
+                return UIViewController()
+            case 4:
+                return UIViewController()
+            default:
+                return UIViewController()
+            }
+        } else {
+            switch row {
+            case 0:
+                return AlgorithmVC()
+            case 1:
+                return UIViewController()
+            case 2:
+                return UIViewController()
+            default:
+                return UIViewController();
+            }
+        }
     }
     
     //Delegate
@@ -85,13 +115,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let section = indexPath.section
         let row = indexPath.row
         var title: String
-        var controller: UIViewController
+        let controller = self.createController(indexPath: indexPath)
         if section == 0 {
             title = structData[row]
-            controller = structDataControllers[row]
         } else {
             title = algorithmData[row]
-            controller = algorithmControllers[row]
         }
         
         controller.navigationItem.title = title
