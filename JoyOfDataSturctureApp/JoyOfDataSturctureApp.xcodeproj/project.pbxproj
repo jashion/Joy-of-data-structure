@@ -25,6 +25,7 @@
 		9E7D490020BAA7BE00614B6B /* AlgorithmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7D48FF20BAA7BE00614B6B /* AlgorithmVC.swift */; };
 		9E7D490220BAA7CE00614B6B /* DataStructureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7D490120BAA7CE00614B6B /* DataStructureVC.swift */; };
 		9EE97EBF20CEBBCB00FBFC6F /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE97EBE20CEBBCB00FBFC6F /* ViewExtension.swift */; };
+		9EED728820EF98CC0094BA1C /* AllLinerTableDataStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EED728720EF98CC0094BA1C /* AllLinerTableDataStructure.swift */; };
 		B3C75A6B1C79648DF2599783 /* Pods_JoyOfDataSturctureApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D963EBDB4BF61465836A2E1 /* Pods_JoyOfDataSturctureApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,7 +52,10 @@
 		9E7D48F720BAA2E500614B6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E7D48FF20BAA7BE00614B6B /* AlgorithmVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmVC.swift; sourceTree = "<group>"; };
 		9E7D490120BAA7CE00614B6B /* DataStructureVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStructureVC.swift; sourceTree = "<group>"; };
+		9E7D7DAD20F3098D0050B4D0 /* LinkListDataStructure.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = LinkListDataStructure.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		9ED95A7020F36C5800F17158 /* DoubleLinkedList.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = DoubleLinkedList.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		9EE97EBE20CEBBCB00FBFC6F /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		9EED728720EF98CC0094BA1C /* AllLinerTableDataStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllLinerTableDataStructure.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,7 @@
 		9E00500D20E2769F007120D2 /* LinearTableGroup */ = {
 			isa = PBXGroup;
 			children = (
+				9EED728620EF98980094BA1C /* Class */,
 				9E69D8A820D116B700239BD5 /* LinearTableVC.swift */,
 				9E00500E20E276C6007120D2 /* LinearTableDefineController.swift */,
 				9E0F84EE20E3C1F600ADBC5F /* OrderLinearTableController.swift */,
@@ -140,6 +145,16 @@
 				9E7D48FF20BAA7BE00614B6B /* AlgorithmVC.swift */,
 			);
 			path = Algorithm;
+			sourceTree = "<group>";
+		};
+		9EED728620EF98980094BA1C /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				9ED95A7020F36C5800F17158 /* DoubleLinkedList.playground */,
+				9E7D7DAD20F3098D0050B4D0 /* LinkListDataStructure.playground */,
+				9EED728720EF98CC0094BA1C /* AllLinerTableDataStructure.swift */,
+			);
+			path = Class;
 			sourceTree = "<group>";
 		};
 		EA8656F2990178D598013F34 /* Pods */ = {
@@ -269,6 +284,7 @@
 			files = (
 				9E7D490220BAA7CE00614B6B /* DataStructureVC.swift in Sources */,
 				9E7D48EE20BAA2E300614B6B /* ViewController.swift in Sources */,
+				9EED728820EF98CC0094BA1C /* AllLinerTableDataStructure.swift in Sources */,
 				9E00500F20E276C6007120D2 /* LinearTableDefineController.swift in Sources */,
 				9E453CE020C786E000DDB667 /* StringExtension.swift in Sources */,
 				9E7D490020BAA7BE00614B6B /* AlgorithmVC.swift in Sources */,

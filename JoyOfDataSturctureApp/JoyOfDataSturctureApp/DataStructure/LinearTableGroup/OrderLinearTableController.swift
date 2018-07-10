@@ -8,59 +8,6 @@
 
 import UIKit
 
-struct ListTable<T: Equatable> {
-    var data: [T] = []
-    
-    func isEmpty() -> Bool {
-        if data.isEmpty {
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    mutating func clearList() {
-        data.removeAll()
-    }
-    
-    func getElem(index: Int) -> T? {
-        if index >= data.count || index < 0 {
-            return nil
-        }
-        return data[index]
-    }
-    
-    func locateElem(item: T) -> Int? {
-        return data.index(of: item)
-    }
-    
-    mutating func append(item: T) {
-        data.append(item)
-    }
-    
-    mutating func insert(item: T, index: Int) {
-        guard index >= 0, index <= data.count else {
-            return;
-        }
-        
-        data.insert(item, at: index)
-    }
-    
-    mutating func delete(index: Int) -> T? {
-        guard index >= 0, index < data.count else {
-            return nil
-        }
-        
-        let item = data[index]
-        data.remove(at: index)
-        return item
-    }
-    
-    func length() -> Int {
-        return data.count
-    }
-}
-
 class OrderLinearTableController: UIViewController {
     var linearTable: ListTable<String>? = nil {
         didSet {
