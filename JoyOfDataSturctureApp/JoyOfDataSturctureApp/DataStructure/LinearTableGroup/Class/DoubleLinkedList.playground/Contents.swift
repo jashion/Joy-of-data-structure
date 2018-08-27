@@ -8,9 +8,9 @@ public enum ErrorStatus {
 }
 
 public class LinkedListNode<T> {
-    var data: T
-    var previous: LinkedListNode?
-    var next: LinkedListNode?
+    var data: T  //Data could not be nil.
+    var previous: LinkedListNode?  //The pointer to previous node.
+    var next: LinkedListNode?  //The pointer to next node.
     init(_ data: T) {
         self.data = data
     }

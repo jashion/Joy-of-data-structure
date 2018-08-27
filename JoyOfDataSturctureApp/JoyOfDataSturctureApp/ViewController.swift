@@ -13,14 +13,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let algorithmData: [String] = ["定义", "查找", "排序"]
     let titles: [String] = ["数据结构", "算法"];
 
-    var tableView: UITableView {
-        get {
-            let table = UITableView.init(frame: UIScreen.main.bounds, style: .plain)
-            table.dataSource = self
-            table.delegate = self
-            return table
-        }
-    }
+    var tableView: UITableView = {
+        let table = UITableView.init(frame: UIScreen.main.bounds, style: .plain)
+        table.dataSource = self
+        table.delegate = self
+        return table
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -41,6 +41,12 @@
 		9E0F84F620E3C24100ADBC5F /* CycleLinkLinearTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleLinkLinearTableController.swift; sourceTree = "<group>"; };
 		9E2219D620C7BEB2004C165C /* CommonHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonHeader.swift; sourceTree = "<group>"; };
 		9E273F7720C031730089E670 /* BasicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicController.swift; sourceTree = "<group>"; };
+		9E288687213436830026AFB9 /* BinaryTreeBackground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = BinaryTreeBackground.playground; sourceTree = "<group>"; };
+		9E288688213436870026AFB9 /* GraphicsPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = GraphicsPlayground.playground; sourceTree = "<group>"; };
+		9E2886892134368B0026AFB9 /* Stack.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Stack.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		9E28868A213436900026AFB9 /* TreePlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TreePlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		9E28868B213436960026AFB9 /* AVOPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = AVOPlayground.playground; sourceTree = "<group>"; };
+		9E28868C213436960026AFB9 /* AVEPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = AVEPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		9E453CDF20C786E000DDB667 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		9E69D8A820D116B700239BD5 /* LinearTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearTableVC.swift; sourceTree = "<group>"; };
 		9E7D48E820BAA2E300614B6B /* JoyOfDataSturctureApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JoyOfDataSturctureApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +156,12 @@
 		9EED728620EF98980094BA1C /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				9E28868C213436960026AFB9 /* AVEPlayground.playground */,
+				9E28868B213436960026AFB9 /* AVOPlayground.playground */,
+				9E28868A213436900026AFB9 /* TreePlayground.playground */,
+				9E2886892134368B0026AFB9 /* Stack.playground */,
+				9E288688213436870026AFB9 /* GraphicsPlayground.playground */,
+				9E288687213436830026AFB9 /* BinaryTreeBackground.playground */,
 				9ED95A7020F36C5800F17158 /* DoubleLinkedList.playground */,
 				9E7D7DAD20F3098D0050B4D0 /* LinkListDataStructure.playground */,
 				9EED728720EF98CC0094BA1C /* AllLinerTableDataStructure.swift */,
