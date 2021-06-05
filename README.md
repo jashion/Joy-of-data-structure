@@ -4,7 +4,7 @@
 >大部分内容来自于《大话数据结构》，代码全部使用Swift实现。至于为什么抽风写这个？😊你懂的。
 # 一. 数据结构一些重要定义
 理解数据结构之前，先来了解一些重要的概念以及这些概念之间的关系。
-### （1）数据
+### 1.1数据
 >数据：可以被计算机理解和处理的描述客观事物的符号集。
 
 几个特征：
@@ -16,7 +16,7 @@
 比如：整型，字符串等等。都可以满足上面上个条件。
 那么？图像，声音算不算数据。答案肯定算，图像，声音这种客观事物，在计算机中转化成二进制来储存，所以，满足上面的条件。
 
-### （2）数据的组成结构
+### 1.2数据的组成结构
 ![DataStructure.png](https://upload-images.jianshu.io/upload_images/968977-ccee5eeaf943ff96.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 >数据元素：数据里面具有一定意义的基本单位。
 
@@ -30,7 +30,7 @@
 
 性质相同，那就好理解了，比如：兴趣相同的人组成的群体或者90后群体等等。
 
-### （3）数据结构
+### 1.3数据结构
 了解到数据其实就是符号集，那么？数据结构是个什么东东？顾名思义，数据结构就是数据的组织形式。类比建筑工程里面的设计结构。
 
 >数据结构：数据结构就是数据之间的组织形式。
@@ -44,7 +44,7 @@
 ```
 上面N中方案都是处理这个1000个苹果的思路，怎么存放涉及到整个架构的设计，好比数据结构就是解决数据之间的组织结构问题的科学。
 
-#### 数据结构分类
+#### 1.3.1数据结构分类
 ![DataStructure2.png](https://upload-images.jianshu.io/upload_images/968977-6f0cc647a06db722.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 - 逻辑结构：数据对象中的数据元素之间的逻辑关系
 
@@ -58,7 +58,7 @@
 顺序储存结构：把数据元素储存在连续的存储单元。
 链式储存结构：把数据元素储存在任意的存储单元（可以是连续或者不连续）。
 
-### （4）数据类型 VS 抽象数据类型 VS  数据结构
+### 1.4数据类型 VS 抽象数据类型 VS  数据结构
 数据类型：是指一组**性质相同**的值的集合以及定义在此集合伤的一些**操作**的总称。
 C语言数据类型分类：
 - 原子类型： 基本类型，比如：整型，字符型等。
@@ -77,10 +77,10 @@ Operation
         操作N
 EndADT
 ```
-#### 数据类型 VS 抽象数据类型
+#### 1.4.1数据类型 VS 抽象数据类型
 数据类型是抽象数据类型的逻辑和物理上的具体实现，抽象数据类型则负责定义数据类型上具有普遍性的逻辑关系以及相关的一组操作。比如说：整型，抽象数据类型的整型是指整型具有的普遍特性，比如拥有加减乘除的操作，但是并不涉及到整型在每种语言的具体实现或者不同的操作系统储存不一样等等；涉及到物理上的具体实现则表示为数据类型。类比**类和接口**。
 
-#### 抽象数据类型 VS 数据结构
+#### 1.4.2抽象数据类型 VS 数据结构
 抽象数据类型强调的是数据的逻辑性，而数据结构则强调的是数据元素之间的组织形式，其中包括逻辑结构和物理结构。两者并没有所谓的包含关系，但是有交集，可以理解为数据结构已经站在更高的层次统筹数据的合理组织像是，而抽象数据类型还停留在数据层面，比数据类型更高一层，更具有普遍性的抽象。
 ```
 类比：
@@ -118,7 +118,7 @@ EndADT
 - 顺序线性表
 - 链式线性表
 
-### 顺序线性表
+### 2.1顺序线性表
 >顺序线性表：使用一段连续的地址存储单元放置线性表的数据元素。
 
 举个例子：数组。
@@ -134,7 +134,7 @@ EndADT
 - 造成存储空间碎片
 ```
 
-### 链式线性表
+### 2.2链式线性表
 >链式线性表：线性表的数据元素可以存储在随意的存储单元，每一个节点不仅仅包括数据元素还有一个指向下一个节点的指针（基本的单链表）。
 
 链式（单链表）和顺序线性表优缺点对比：
@@ -160,7 +160,8 @@ EndADT
 （1）若线性表需要频繁查找，很少进行插入和删除操作时，使用顺序存储结构；反之，使用链式存储结构。
 （2）如果提前知道线性表需要的存储空间，可以使用顺序结构；如果不知道线性表中的数据元素变化有多大，即不确定需要多大的存储空间，则使用链式存储结构。
 
-链式线性表的基本分类：
+#### 2.2.1链式线性表的基本分类：
+
 - 单向链表 
 - 静态链表 -> 使用顺序结构实现链式线性表
 - 双向链表 -> 每个节点除了数据元素，还包含一个指向上一个节点的指针和一个指向下一个节点的指针
@@ -329,6 +330,9 @@ public func remove(atIndex index: Int) -> (T?, ErrorStatus) {  //Remove node at 
 2.判断index是否等于0，如果是，则直接将head=secondNode。
 3.获取beforeNode和nextNode，然后将beforeNode.next=nextNode，nextNode,previous=beforeNode，自此，下标为index的节点，没有任何对象指向它，在当前函数域外就外被系统回收掉。
 # 三. 栈与队列
+
+### 3.1栈
+
 >栈：限定在表尾进行插入和删除的线性表。
 
 栈是一种LIFO(Last In First Out)的线性表，也就是数据元素遵循后进先出的原则。
@@ -405,7 +409,8 @@ public struct Stack<T> {
 }
 ```
 上面的代码写的非常清楚，一目了然，这里就不费口舌了。
-##### 栈较之线性表有什么特别作用？😊
+#### 3.1.1栈较之线性表有什么特别作用？😊
+
 栈和线性表的不同之处在于，栈只有进栈和出栈操作，并且遵循后进先出的规则，也就是说数据元素顺序进栈，逆序出栈。嘿嘿，栈可以实现回退操作，递归和四则运算等等。
 - **递归**
 `听说过斐波那契数列吗？😏没错就是兔子繁殖🐰：`
@@ -586,6 +591,9 @@ let exp = ["9", "+", "(", "3", "-", "1", ")", "*", "3", "+", "10", "/", "2"]
 //result=20
 ```
 是不是很有意思，一个简单的四则运算就这样实现出来了。栈在计算机里面用的挺多的，比如，系统管理的对象就是放进一个全局栈里面的，等不需要的时候，一个一个出栈，释放所占的内存。
+
+### 3.2队列
+
 >队列：只允许在一端进行插入操作，而在另一端进行删除操作的线性表。
 
 队列其实和显示社会排队买东西的队列一个道理，都是一边进，一边出，插队是会被所有人鄙视的😒，慎重。
@@ -655,8 +663,9 @@ public struct Queue<T> {
     }
 }
 ```
-**队列有什么作用？**
+#### 3.2.1队列有什么作用？
 在开发过程中，接触最多的应该是全局并发队列。为什么要用队列实现呢？在我看来，在线程的优先级一样的情况下，不应该先申请系统资源的先被满足吗？这和在银行排队取钱是一个道理。当然，VIP就可以无视我们这些在前台排队取钱的渣渣，他们有专门的通道，多么痛的领悟😓。
+
 # 四. 串
 >串：是由零个或多个字符组成的有限序列，又叫字符串。
 
@@ -676,8 +685,9 @@ EndADT
 - 顺序存储结构的字符串
 - 链式存储结构的字符串
 
-**字符串的模式匹配**
+### 4.1字符串的模式匹配
 朴素的模式匹配算法：核心思想，需要匹配的字符串和主串从下标0开始匹配，一旦子串不匹配，则子串又从下标0开始匹配，主串则挪到下标1，不断的循环这个过程，直到主串或者字串当前的下标超过字符串的长度或者匹配成功返回。
+
 ```
 let s = "goodgoogle"
 let t = "google"
@@ -713,6 +723,7 @@ func matchString(s: String, t: String) -> Int {
 朴素的模式匹配，虽然，简单明了，但是效率低。所以，强大的KMP模式匹配算法就应运而生了。
 强大的KMP算法，这个可以看我之前写的[KMP字符串匹配算法](https://www.jianshu.com/p/68e9a227cb45)，这里就不做详细的介绍了。
 # 五. 树
+
 >树：n（n>=0）个结点的有限集。
 ```
 特点：
@@ -723,6 +734,7 @@ func matchString(s: String, t: String) -> Int {
 ```
 
 **结点分类：**
+
 - 结点拥有的子树数称为结点的度（Degree）。
 - 度为0的结点称为叶结点（Leaf）或终端结点；度不为0的结点称为非终端结点或分支结点。
 - 除根节点之外，分支结点也称为内部结点。
@@ -754,6 +766,7 @@ func matchString(s: String, t: String) -> Int {
 - 中间结点：一个双亲，多个孩子
 ```
 **树的抽象数据类型：**
+
 ```
  ADT  树（tree）
     树是由一个根结点和若干课子树构成。树中结点具有相同数据类型及层次关系。
@@ -764,13 +777,15 @@ Operation
     ...
 EndADT
 ```
-### 树的存储结构：
+### 5.1树的存储结构：
 - 双亲表示法
 - 孩子表示法
 - 孩子兄弟表示法
 
 以下图为例讲解树三种表示法：
 ![树的三种表示法](https://upload-images.jianshu.io/upload_images/968977-515fe5ada11bb874.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+#### 5.1.1双亲表示法
 
 >双亲表示法：在每个结点中，拥有指向双亲结点的指针（可以扩展子结点或者兄弟结点）。
 
@@ -787,15 +802,19 @@ EndADT
 |   8   |    I    |    3     |
 |   9   |   J    |     4     |
 
+#### 5.1.2孩子表示法
+
 >孩子表示法：每个结点有多个指针域，其中每个指针指向一棵子树的根结点，叫多重链表表示法；把每个结点排列起来，以单链表做存储结构，叫孩子表示法。
 
 ![孩子表示法](https://upload-images.jianshu.io/upload_images/968977-46087b0e034aaf97.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+#### 5.1.3孩子兄弟表示法
 
 >孩子兄弟表示法：一个结点设置两个指针，分别指向该结点的第一个子结点和该结点的右兄弟。
 
 ![孩子兄弟表示法](https://upload-images.jianshu.io/upload_images/968977-49ef5e6e316cc74f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-### 二叉树
+### 5.2二叉树
 >二叉树：n（n>=0）个结点的有限集合，该集合或者为空集（空二叉树），或者为由一个根结点和两颗互不相交的、分别称为根结点的左子树和右子树的二叉树组成。
 
 **由定义而得出二叉树的特点：**
@@ -856,7 +875,7 @@ k-1<=log2(n)<k，即：k<=log2(n)+1并且k>log2(n)
 -> 性质5.3
 由5.2可的2i其实就是i的左孩子，则2i+1就是i的右孩子，那么2i+1>n，即超过了最大的结点数，所有没有右孩子。
 ```
-### 二叉树的存储结构
+### 5.3二叉树的存储结构
 ![完全二叉树](https://upload-images.jianshu.io/upload_images/968977-39ffd35640304ae1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 - 二叉树顺序存储结构
 由于二叉树每个结点最多只有2个子树，并且左右子树是有顺序的，所以，可以使用数组直接存储。
@@ -864,7 +883,7 @@ k-1<=log2(n)<k，即：k<=log2(n)+1并且k>log2(n)
 
 - 二叉树链式存储结构
 ![链表1](https://upload-images.jianshu.io/upload_images/968977-8f8ad640f8825389.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-### 二叉树遍历
+### 5.4二叉树遍历
 >二叉树的遍历是指从根结点出发，按照某种次序依次访问二叉树中所有结点，使得每个结点被访问有且仅有一次。
 
 三种遍历次序：
@@ -890,6 +909,7 @@ class BinTNode<T>: NSObject{
 }
 
 //前序遍历
+//递归
 func preOrderTraverse(t: BinTNode<String>?) {
     guard let tNode = t else {
         return
@@ -899,9 +919,82 @@ func preOrderTraverse(t: BinTNode<String>?) {
     preOrderTraverse(t: tNode.lChild)
     preOrderTraverse(t: tNode.rChild)
 }
+
+//迭代
+func preOrderTraversal_2(root: BinTNode<String>?) -> [String] {
+    guard root != nil else {
+        return []
+    }
+    var res = [String]()
+    var stack = [BinTNode<String>]()
+    stack.append(root!)
+    
+    //stack是先进后出，所以，先把右节点压入栈，再把左节点压入栈
+    //前序遍历：根->左子树->右子树
+    while !stack.isEmpty {
+        let top = stack.removeLast() //栈顶出站
+        res.append(top.val)
+        
+        if let right = top.rightNode {
+            stack.append(right)
+        }
+        
+        if let left = top.leftNode {
+            stack.append(left)
+        }
+    }
+    
+    return res
+}
+
+//为什么前序，中序和后序遍历适合用stack，而层遍历则适合用queue？
+//因为前面的遍历需要回溯功能，而层遍历则不需要
+//         a
+//       /   \
+//      b     c
+//     / \   / \
+//    e   f g   h
+// 以上面的二叉树为例：
+//中序遍历顺序：根节点->左子树根节点->右子树根节点
+//1.访问a并添加到栈里，然后访问a的左子树
+//2.访问b并添加到栈里，然后访问b的左子树
+//3.访问e并添加到栈里，然后访问e的左子树
+//4.因为e的左子树为空，并且e已经被访问过了，以e为根节点的二叉树只有e的右子树还没被访问过，所以可以把e的右子树替代以e为根的
+//  二叉树作为b的左子树来访问，所以，e出栈，e的右子树（右子树不为空）进栈
+//5.因为e的右子树为空，也就是说以e为根的二叉树都已经被访问了，并且e是b的左子树，也就说b的左子树已经完全被访问了，以b为根节点
+//  的二叉树只有右子树还没被访问，所以，将右子树替代整个二叉树，所以b出栈，f进栈
+//6.不断重复上面的过程，直到栈为空，则表明所有元素都已经遍历完
+func preOrderTraversal_3(root: BinTNode<String>?) -> [String] {
+    var res = [String]()
+    var stack = [BinTNode<String>]()
+    var curr = root
+    
+//    while !stack.isEmpty || curr != nil{
+//        while curr != nil {
+//            res.append(curr!.val)
+//            stack.append(curr!)
+//            curr = curr?.leftNode
+//        }
+//
+//        curr = stack.removeLast().rightNode
+//    }
+    while !stack.isEmpty || curr != nil{
+        if curr != nil {
+            res.append(curr!.val)
+            stack.append(curr!)
+            curr = curr?.leftNode
+        } else {
+            curr = stack.removeLast().rightNode
+        }
+    }
+    
+    return res
+}
+
 前序遍历结果：ABDHIEJCFG => A->(B->(D->H->I)->(E->J))->(C->F->G)
 
 //中序遍历
+//递归
 func inOrderTraverse(t: BinTNode<String>?) {
     guard let tNode = t else {
         return
@@ -910,9 +1003,31 @@ func inOrderTraverse(t: BinTNode<String>?) {
     print(tNode.data)
     inOrderTraverse(t: tNode.rChild)
 }
+
+//迭代
+func inOrderTraversal_2(root: BinTNode<String>?) -> [String] {
+    var res = [String]()
+    var stack = [BinTNode<String>]()
+    var node = root
+
+    while !stack.isEmpty || node != nil{
+        while node != nil {
+            stack.append(node!)
+            node = node?.leftNode
+        }
+        
+        node = stack.popLast()
+        res.append(node!.val)
+        node = node?.rightNode
+    }
+    
+    return res
+}
+
 中序遍历结果：HDIBJEAFCG => ((H<-D->I)<-B->(J<-E))<-A->(F<-C->G)
 
 //后序遍历
+//递归
 func postOrderTraverse(t: BinTNode<String>?) {
     guard let tNode = t else {
         return
@@ -921,10 +1036,37 @@ func postOrderTraverse(t: BinTNode<String>?) {
     postOrderTraverse(t: tNode.rChild)
     print(tNode.data)
 }
+
+//迭代
+//左->右->根
+//反之：根->左->右
+//后序遍历如果直接遍历的话需要记录当前栈的元素左右子树是否有被访问，如果左右子树都被访问，则当前节点出栈，否则，继续访问右子树，但是后序遍历：左->右->根，可以看成:根->右->左遍历的逆序，那么前序遍历稍微改一下顺序就可以变成后序遍历了，并且是先访问根节点，也就是栈里面的节点都是已被访问过的，所以不需要记录当前节点的左右子树访问情况。
+func postOrderTraversal_2(root: BinTNode<String>?) -> [String] {
+    var res = [String]()
+    var stack = [BinTNode<String>]()
+    stack.append(root!)
+
+    while !stack.isEmpty{
+        let top = stack.removeLast()
+        res.append(top.val)
+        
+        if let left = top.leftNode {
+            stack.append(left)
+        }
+        
+        if let right = top.rightNode {
+            stack.append(right)
+        }
+    }
+    
+    return res.reversed()
+}
+
 后序遍历结果：HIDJEBFGCA => ((H->I->D)->(J->E)->B)->(F->G->C)->A
 
-//层叙遍历
-func layerOrderTraverse(t: BinTNode<String>?) {
+//层序遍历
+//层序遍历适合用队列，因为不需要回溯
+func layerOrderTraversal(t: BinTNode<String>?) {
     guard let tNode = t else {
         return
     }
@@ -945,9 +1087,35 @@ func layerOrderTraverse(t: BinTNode<String>?) {
         array.removeSubrange(Range.init(NSRange(location: 0, length: count))!)
     }
 }
+
+func layerOrderTraversal_2(root: BinTNode<String>?) -> [String] {
+    guard root != nil else {
+        return []
+    }
+    
+    var res = [String]()
+    var queue = [BinTNode<String>]()
+    queue.append(root!)
+    
+    while !queue.isEmpty {
+        let node = queue.removeFirst()
+        res.append(node.val)
+        
+        if let left = node.leftNode {
+            queue.append(left)
+        }
+        
+        if let right = node.rightNode {
+            queue.append(right)
+        }
+    }
+    
+    return res
+}
+
 层序遍历结果：ABCDEFGHIJ => A->(B->C)->(D->E->F->G)->(H->I->J)
 ```
-### 线索二叉树
+### 5.5线索二叉树
 >线索二叉树：指向前驱和后续的指针称为线索，加上线索的二叉树称为线索二叉树。
 
 线索二叉树的数据结构：
@@ -988,7 +1156,7 @@ func inOrderTraverse_Thread(t: BinTNode<String>?) {
 3.遍历到右子树，重复1，2两步骤
 ```
 如果所用的二叉树需经常遍历或查找结点时需要某种遍历序列中的前驱和后续，那么采取线索二叉链表的存储结构就是非常不错的选择。
-### 树、森林与二叉树的转换
+### 5.6树、森林与二叉树的转换
 - 树转换为二叉树
 ```
 1.加线。在所有兄弟结点之间加一条线。
@@ -1032,7 +1200,7 @@ func inOrderTraverse_Thread(t: BinTNode<String>?) {
 使用后根依次遍历每棵树。
 比如：图二叉树 -> 森林，前序遍历：ABCDEFGHJI 后序遍历：BCDAFEJHIG
 ```
-### 赫夫曼树
+### 5.7赫夫曼树
 >赫夫曼树：从树中一个结点到另一个结点之间的分支构成两个结点之间的路径，路径上的分支数目称作路径长度。树的路径长度就是从树根到每一结点的路径长度之和。其中，带权路径长度WPL最小的二叉树称作赫夫曼树。
 ![赫夫曼树](https://upload-images.jianshu.io/upload_images/968977-ec4a3deb20badac4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 二叉树a中，根结点到A的路径为1，带权路径为：15x1=15
@@ -1070,7 +1238,8 @@ WPL：40*1 + 60*1 + 30*2 + 15*3 + 5*4 + 10*4 = 205
 - 顶点集合不能为空
 - 边的集合可以为空
 
-### 各种图定义
+# 六.各种图定义
+
 - **无向图**：若顶点v1到v2之间的边没有方向，则称这条边为无向边，用无序偶对(v1, v2)来表示。无向图就是图中任意两个顶点之间的边都是无向边。
 ![无向图](https://upload-images.jianshu.io/upload_images/968977-846b47165429efd0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
@@ -1089,18 +1258,18 @@ WPL：40*1 + 60*1 + 30*2 + 15*3 + 5*4 + 10*4 = 205
 - 与图的边或者弧相关的数字叫做权，带权的图称为网。
 - 子图：假设有两个图G=(V, {E})和G1=(V1, {E1})，如果V1⊆V，且E1⊆E，则称G1为G的子图。
 
-### 图的顶点和边之间的关系
+### 6.1图的顶点和边之间的关系
 ![图1](https://upload-images.jianshu.io/upload_images/968977-51ddcfc46f340542.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 - **顶点的度：**
   对于无向图G=(V,{E})，如果边(V,V1)∈E，则称顶点V和V1互为邻接点，顶点V的度是和V相关联的边的数目，记为TD(V)。如图1，A的度TD(A)=3，TD(B)=2，TD(C)=3，TD(D)=2，则各个顶点的度总和为：3+2+3+2=10，而图1无向图的边数为5，即各个顶点的度的总和的一半。
- 对于有向图G=(V,{E})，如果弧<V,V1>∈E，则称顶点V和V1互为邻接点；以顶点V为头的弧的数目称为V的入度，记为ID(V)；以顶点V为尾的弧的数目称为V的出度，记为OD(V)；则顶点TD(V)=ID(V)+OD(V)。如图1有向图，TD(A)=ID(A)+OD(A)=2+1=3，各顶点的出度和为：1+2+1+0=4，各顶点的入度和为：2+0+1+1=4，有向图的边的总数4，所以，有向图边的总数=各顶点的出度数=各顶点的入度数。
+   对于有向图G=(V,{E})，如果弧<V,V1>∈E，则称顶点V和V1互为邻接点；以顶点V为头的弧的数目称为V的入度，记为ID(V)；以顶点V为尾的弧的数目称为V的出度，记为OD(V)；则顶点TD(V)=ID(V)+OD(V)。如图1有向图，TD(A)=ID(A)+OD(A)=2+1=3，各顶点的出度和为：1+2+1+0=4，各顶点的入度和为：2+0+1+1=4，有向图的边的总数4，所以，有向图边的总数=各顶点的出度数=各顶点的入度数。
 
 - **路径：**
   从一个顶点到另一个顶点所走过的顶点和边所连成的通道。比如图1的无向图，从B到D有四条路径，分别是(BAD)，(BCD)，(BACD)，(BCAD)。而图1从B到D的路径是有方向的，即(BAD)，(BCAD)。路径的长度是路径上的边数或弧的数目。序列中顶点不重复出现的路径称为简单路径。
 - **回路或环：**
   点一个顶点和最后一个顶点相同的路径称为回路或者环。其中，除了第一个顶点和最后一个顶点，其余顶点不重复出现的回路，称为简单回路或简单环。下面图1左边就是简单回路，右边并不是简单回路，因为顶点C重复出现了。
-![图2](https://upload-images.jianshu.io/upload_images/968977-7f51161408592603.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+  ![图2](https://upload-images.jianshu.io/upload_images/968977-7f51161408592603.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 - **连通图：**
 在无向图G中，如果从顶点V到顶点V1有路径，则称顶点V和顶点V1是连通的。如果对于图中任意两个顶点都是连通的，则称G是连通图。如图3，左边的图不是连通图，右边的图是连通图。
@@ -1110,11 +1279,11 @@ WPL：40*1 + 60*1 + 30*2 + 15*3 + 5*4 + 10*4 = 205
 
 - **连通分量：**
   无向图中的极大连通子图称为连通分量。
-（1）子图。
-（2）子图是连通的。
-（3）连通的子图含有极大的顶点数。
-（4）具有极大顶点数的连通子图包含依附于这些顶点的所有边。
-比如图3中，左边的图的连通分量为右边的图。
+  （1）子图。
+  （2）子图是连通的。
+  （3）连通的子图含有极大的顶点数。
+  （4）具有极大顶点数的连通子图包含依附于这些顶点的所有边。
+  比如图3中，左边的图的连通分量为右边的图。
   在有向图G中，如果对于每一对V1，V2∈V，V1≠V2，从V1到V2和从V2到V1都存在路径，则称G是强连通图。有向图中极大强连通子图称做有向图的强连通分量。上图4中左边的图不是强连通图，右边的图是强连通图。
 - **无向图生成树：**
   一个连通图的生成树是一个极小的连通子图，它含有图中全部的n个顶点，但只有足以构成一棵树的n-1条边。比如图2中左边的无向图，它的连通分量为自身，则它的极小连通子图为，自身去调AC和AD两条边，则构成一个极小连通图，因为再去多一条边就构不成连通图了，这个就是连通图的生成树。
@@ -1122,9 +1291,9 @@ WPL：40*1 + 60*1 + 30*2 + 15*3 + 5*4 + 10*4 = 205
   如果一个有向图恰有一个顶点的入度为0，其余顶点的入度都为1，则是一颗有向树。（不需要连通）
 - **生成森林：**
   一个有向图的生成森林由若干有向树组成，含有图中全部顶点，但只有足以构成若干课不相交的有向树的弧。
-![图5](https://upload-images.jianshu.io/upload_images/968977-905b8e8e2db52233.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+  ![图5](https://upload-images.jianshu.io/upload_images/968977-905b8e8e2db52233.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-### 图的抽象数据类型
+### 6.2图的抽象数据类型
 ```
 ADT 图(Graph) 
 Data
@@ -1138,7 +1307,7 @@ Operation
     ...
 EndADT
 ```
-### 图的数据存储
+### 6.3图的数据存储
 >邻接矩阵：用两个数组来表示图。一个一维数组储存图中顶点信息，一个二维数组（称为邻接矩阵）存储图中的边或弧的信息。
 
 - **无向图**
@@ -1199,12 +1368,12 @@ v0的入度为：1->0, 2->0，v0的出度为：0->3。
 
 ![邻接多重表](https://upload-images.jianshu.io/upload_images/968977-6ef3e5e451d320c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 上图总共有5条边，分别是v0->v1，v1->v2，v2->v3，v3->v0，v0-v2，所以，会有5个边结点。然后从v0开始，有三条邻接的边，分别是v0-v1，v0-v2，v0-v3，首先vo指向E(0,1)，然后当前的边结点的ivex=0，所以，ilink需要找到下一条顶点为v0的边，顺着边结点往下找，可以找到E(3,0)，所以，ilink指向E(3,0)，由于，v0还有另外一条边E(0,2)，所以，jlink顺着往下找，找到E(0,2)，再往下没有边结点了，所以置为空。其他顶点的操作也是相似的过程。
- 
+
 >边集数组：边集数组是由两个一位数组组成。一个是存储顶点信息，另一个是存储边的信息。这个数组每个数据元素由一条边的起点下标(begin)，终点下标(end)和权(weight)组成。
 
 ![边集数组](https://upload-images.jianshu.io/upload_images/968977-88c39379b7d01d52.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-### 图的遍历
+### 6.4图的遍历
 >图的遍历：从图中某一顶点出发访遍图中其余顶点，且使每一个顶点被访问一次。
 
 - **深度优先遍历（DFS）**
@@ -1551,7 +1720,7 @@ BFSTraverse(graphics: graphics)
 
 >比较：深度优先遍历适合目标比较明确，而广度优先遍历更适合在不断扩大范围时找到相对最优解的情况。
 
-### 最小生成树
+### 6.5最小生成树
 >最小生成树：构造连通网的最小代价生成树称为最小生成树。
 
 寻找最小生成树的两种算法：普里姆算法(Prim)和克鲁斯卡尔算法(Kruskal)。
@@ -1651,7 +1820,7 @@ miniSpanTree_Kruskal(graphics: graphics)
 - **两个算法对比：**
 对比两个算法，克鲁斯卡尔算法主要是针对边来展开，边数少时效率会非常高，所以对于稀疏图有很大的优势。而普里姆算法对于稠密图，即边数非常多的情况会更 好一些。
 
-### 最短路径
+### 6.6最短路径
 >对于网图来说，最短路径，是指两顶点之间经过的边上权值之和最小的路径，并且，我们称路径上第一个顶点为源点，最后一个顶点为终点。
 
 以下面的网图，寻找最短路径：
@@ -1831,7 +2000,7 @@ ShortestPath_Floyd(graphics: graphics)
 - **两个算法总结：**
 如果只需求其中两个顶点之间的最短路径，采用迪杰斯特拉算法；如果需要求所有顶点到所有顶点的最短路径，可以采用佛洛依德算法，虽然，两个算法计算所有顶点到所有顶点的最短路径的时间复杂度都是O(n^3)，但是佛洛依德算法比较简洁，不易出错。
 
-### 拓扑结构
+### 6.7拓扑结构
 >在一个表示工程的有向图中，用顶点表示活动，用弧表示活动之间的优先关系，这样的有向图表示的网，称为AOV网（Activity On vertex Network）。假设G=(V,E)是一个具有n个顶点的有向图，V中的顶点序列v1, v2, v3, ...... , Vn，满足若从顶点vi到vj有一条路径，则中顶点序列中顶点vi必须在vj之前，我们称这样的顶点序列为一个拓扑序列。拓扑排序，就是对一个有向图构造拓扑序列的过程。拓扑序列的主要作用是确定一个有向图确定的有序序列，比如：iOS开发使用拓扑序列来整理整个工程的文件依赖，比如检查循环依赖，比如确认从那个依赖文件开始编译等等。两个特点：1.无环有向图 2.两个顶点之间的方向只有一个。
 
 ![AVO图.png](https://upload-images.jianshu.io/upload_images/968977-ea591cafb180a6f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -2099,7 +2268,7 @@ vertex: 11
 2.从栈顶开始，出栈；然后，遍历该栈顶元素的链表，每个顶点的入度减1，判断每个顶点的入度是否为0，如果为0则入栈，否则跳过。
 3.判断栈是否还有元素，如果栈不为空，则回到第2步，否则，结束。
 
-### 关键路径
+### 6.8关键路径
 >拓扑排序解决一个工程能否顺利进行的问题，那么，关键路径就是解决工程完成需要的最短时间问题。在一个表示工程的带权有向图中，用顶点表示事件，用有向边表示活动，用边上的权值表示活动的持续时间，这种有向图的边表示活动的网，我们称之为 **AOE网** (Activity On Edge Network) 。 我们把AOE网中没有人边的顶点称为始点或源点，没有出边的顶点称为终点或汇点。我们把路径上各个活动所持续的时间之和称为路径长度，从源点到汇点具有最大长度的路径叫关键路径，在关键路径上的活动叫关键活动。
 
 ![AOE图.png](https://upload-images.jianshu.io/upload_images/968977-c61b3a2fdc82af3f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
